@@ -1,19 +1,21 @@
 import data from './data.js';
 
 const resolvers = {
-  Review: {
-    author(review) {
-      return { __typename: "User", id: review.authorID };
+  Product: {
+    media(product) {
+      console.log('🎬 media: calling product media query resolver');
+      return data[product.id];
+    },
+  },
+  Query: {
+    media() {
+      console.log('🎬 media: calling root media query resolver');
+      const reducer = (acc, gameMedia = { screenshots: [], videos: []}) => 
+        ({ screenshots: [...acc.screenshots, ...gameMedia.screenshots], videos: [...acc.videos, ...gameMedia.videos] });
+
+      return Object.values(data).reduce(reducer);
     }
-  },
-  User: {
-    reviews(user) {
-      return data.filter(review => review.authorID === user.id);
-    },
-    numberOfReviews(user) {
-      return data.filter(review => review.authorID === user.id).length;
-    },
-  },
+  }
 };
 
 export default resolvers;

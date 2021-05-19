@@ -2,12 +2,14 @@ import { gql } from "apollo-server";
 
 const typeDefs = gql`
   extend type Query {
-    user(id: ID!): User
+    product(id: ID!): Product
   }
-  type User @key(fields: "id") {
+  type Product @key(fields: "id") {
     id: ID!
     name: String
-    username: String
+    publisher: String
+    description: String
+    basePrice: Float
   }
 `;
 

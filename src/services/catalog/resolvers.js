@@ -2,15 +2,14 @@ import data from './data.js';
 
 const resolvers = {
   Query: {
-    user(parent, args, context, info) {
-      console.log('calling from query');
+    product(parent, args, context, info) {
+      console.log('🗂 catalog: calling product query resolver');
       return data.find(data => data.id === args.id);
     },
   },
-  User: {
+  Product: {
     __resolveReference(object) {
-      console.log('calling from resolveReference');
-      console.log(object);
+      console.log('🗂 catalog: calling __resolveReference product query resolver');
       return data.find(data => data.id === object.id);
     }
   }

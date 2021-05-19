@@ -5,6 +5,7 @@
     "start-gateway": "nodemon src/gateway/gateway.js",
     "start-service-catalog": "nodemon src/services/catalog/index.js",
     "start-service-media": "nodemon src/services/media/index.js",
+    "start-service-price": "nodemon src/services/price/index.js",
     "start-services": "concurrently \"npm:start-service-*\"",
     "postinstall": "lerna bootstrap"
   },

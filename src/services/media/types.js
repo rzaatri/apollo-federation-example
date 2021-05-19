@@ -1,15 +1,16 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  type Review @key(fields: "id") {
-    id: ID!
-    body: String
-    author: User
+  type Media {
+    screenshots: [String]
+    videos: [String]
   }
-  extend type User @key(fields: "id") {
+  extend type Query {
+    media: Media
+  }
+  extend type Product @key(fields: "id") {
     id: ID! @external
-    reviews: [Review]
-    numberOfReviews: Int
+    media: Media
   }
 `;
 
