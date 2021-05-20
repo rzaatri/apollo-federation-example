@@ -1,7 +1,8 @@
 # apollo-federation-example
 Example repo for apollo federation investigations
 
-Sample Query
+# Sample Query
+The following query provides an example data surfaced from the graph
 
 query {
   product(id: "productA") {
@@ -21,3 +22,13 @@ query {
     videos
   }
 }
+
+# How to Run
+## Start Services
+npm run start-services
+
+## Start Gateway
+npm run start-gateway
+
+## Open GQL Playground
+Go to http://localhost:4000/
