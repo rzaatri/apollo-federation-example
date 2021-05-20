@@ -23,12 +23,46 @@ query {
   }
 }
 
-# How to Run
+# How to Run Locally (Ideal for Development)
+## Install packages
+npm install
+
 ## Start Services
-npm run start-services
+npm run start-services (in one terminal)
 
 ## Start Gateway
-npm run start-gateway
+npm run start-gateway (in another terminal)
 
 ## Open GQL Playground
 Go to http://localhost:4000/
+
+# How to Run Dockerized Images (Ideal for just running the services)
+In the case you want to just stand up the services through dockerized images.
+
+## Build Containers
+docker compose build
+
+## Run Containers
+docker compose up
+
+# Misc. Docker Notes
+## To See All Images
+docker images
+
+## To See All Running Images
+docker ps
+
+## To Get Output of Container
+docker logs <container id>
+
+## To Stop Running Container
+docker stop <container id>
+
+## To Stop All Running Containers
+docker stop $(docker ps -q)
+
+## To see the all docker network configurations
+docker network ls
+
+## To inspect the details for a particular network
+docker network inspect <network name> (ex. apollo-federation-example_default)

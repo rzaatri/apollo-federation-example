@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  gateway:
+    build:
+      context: ./
+    volumes:
+      - .:/src
+    command: node src/gateway/gateway.js
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: development
+      USE_SERVICE_NAME: "true"
+      depends_on: "catalog, media, price"
+  catalog:
+    build:
+      context: ./src/services/catalog
+    volumes:
+      - .:/src
+    command: node index.js
+    ports:
+      - "4001:4001"
+    environment:
+      NODE_ENV: development
+  media:
+    build:
+      context: ./src/services/media
+    volumes:
+      - .:/src
+    command: node index.js
+    ports:
+      - "4002:4002"
+    environment:
+      NODE_ENV: development
+  price:
+    build:
+      context: ./src/services/price
+    volumes:
+      - .:/src
+    command: node index.js
+    ports:
+      - "4003:4003"
+    environment:
+      NODE_ENV: development

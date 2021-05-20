@@ -2,15 +2,20 @@
 const { ApolloServer } = require("apollo-server");
 const { ApolloGateway } = require("@apollo/gateway");
 
+const useServiceName = process.env.USE_SERVICE_NAME;
+const catalogUrl = `http://${useServiceName ? 'catalog' : 'localhost'}:4001/graphql`;
+const mediaUrl = `http://${useServiceName ? 'media' : 'localhost'}:4002/graphql`;
+const priceUrl = `http://${useServiceName ? 'price' : 'localhost'}:4003/graphql`;
+
 const gateway = new ApolloGateway({
   serviceList: [
-    { name: "catalog", url: "http://localhost:4001/graphql" },
-    { name: "media", url: "http://localhost:4002/graphql" },
-    { name: "price", url: "http://localhost:4003/graphql" },
+    { name: "catalog", url: catalogUrl },
+    { name: "media", url: mediaUrl },
+    { name: "price", url: priceUrl},
   ],
 
   // Experimental: Enabling this enables the query plan view in Playground.
-  // __exposeQueryPlanExperimental: false,
+  __exposeQueryPlanExperimental: true,
 });
 
 (async () => {
@@ -20,6 +25,6 @@ const gateway = new ApolloGateway({
   });
 
   server.listen().then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
+    console.log(`🚀 Gateway Server ready at ${url}`);
   });
 })();
