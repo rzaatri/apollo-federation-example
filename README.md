@@ -66,3 +66,8 @@ docker network ls
 
 ## To inspect the details for a particular network
 docker network inspect <network name> (ex. apollo-federation-example_default)
+
+# k6
+To run a sample k6 test, go to the test directory and run...
+
+k6 run k6-load-test.js
