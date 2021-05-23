@@ -1,5 +1,8 @@
 # apollo-federation-example
-Example repo for apollo federation investigations
+Example repo for apollo federation investigations. 
+
+Note: The src/apollo-complete-graph is an example of the same graph, but in a single apollo gql server instance.
+Mostly there to run performance tests against compared to the federated service example. Use 'node index.js' to start in directory
 
 # Sample Query
 The following query provides an example data surfaced from the graph

@@ -1,0 +1,11 @@
+{
+  "name": "apollo-complete-graph",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "apollo-server": "latest",
+    "graphql": "latest"
+  }
+}
